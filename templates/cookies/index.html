@@ -8,5 +8,10 @@
   <body>
     <h1>MIAM</h1>
     <p>Vous avez mangé {{nb_cookies}} cookies.</p>
+    <button id="crunch">Crunch</button>
+    <script>
+      var button = document.getElementById("crunch");
+      button.addEventListener("click", () => location.reload());
+    </script>
   </body>
 </html>

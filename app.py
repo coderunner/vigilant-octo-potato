@@ -2,16 +2,22 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import make_response
+import uuid
 
 app = Flask(__name__)
 
-NB_COOKIES_KEY = 'nb_cookies'
+SESSIONS = {}
+SESSION_ID_COOKIE_KEY = 'sessionId'
 
 @app.route("/cookies")
 def index():
-    nb_cookies = int(request.cookies.get(NB_COOKIES_KEY, "0"))
-    nb_eaten = nb_cookies + 1
-    response = make_response(render_template( 'cookies/index.html', nb_cookies = nb_eaten))
+    sessionId = request.cookies.get(SESSION_ID_COOKIE_KEY)
+    if sessionId == None:
+        sessionId = str(uuid.uuid4())
+    
+    cookies = SESSIONS.get(sessionId, 0)
+    SESSIONS[sessionId] = cookies + 1
+    response = make_response(render_template( 'cookies/index.html', nb_cookies = SESSIONS[sessionId]))
     response.headers['cache-control'] = 'no-cache'
-    response.set_cookie(NB_COOKIES_KEY, str(nb_eaten))
+    response.set_cookie(SESSION_ID_COOKIE_KEY, sessionId)
     return response
