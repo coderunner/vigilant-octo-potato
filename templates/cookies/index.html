@@ -13,9 +13,15 @@
     <h1>MIAM</h1>
     <p>Vous avez mangé {{nb_cookies}} cookies.</p>
     <button id="crunch">Crunch</button>
+    <div style="margin-top: 40px; font-style: italic">
+      <label>Cookies vus par le JS:</label><span id="cookieJs"></span>
+    </div>
     <script>
       var button = document.getElementById("crunch");
       button.addEventListener("click", () => location.reload());
+
+      var cookieJs = document.getElementById("cookieJs");
+      cookieJs.innerHTML = document.cookie;
     </script>
   </body>
 </html>
