@@ -2,7 +2,7 @@
 
 Demo server for INF5190
 
-Pour installer flask: https://flask.palletsprojects.com/en/2.2.x/installation/
+Pour installer flask: https://flask.palletsprojects.com/en/2.3.x/installation/
 
     . .venv/bin/activate
 

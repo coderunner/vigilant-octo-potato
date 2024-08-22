@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import make_response
+from datetime import datetime
 import uuid
 
 app = Flask(__name__)
@@ -23,5 +24,5 @@ def index():
         'cookies/index.html', nb_cookies=SESSIONS[sessionId]))
     response.headers['cache-control'] = 'no-cache'
     response.set_cookie(SESSION_ID_COOKIE_KEY, sessionId)
-    response.set_cookie(HTTP_ONLY_COOKIE_KEY, 'httpOnly', httponly=True)
+    response.set_cookie(HTTP_ONLY_COOKIE_KEY, 'seulement visible sur http - non accessible dans le js - ' + str(datetime.now()), httponly=True)
     return response
