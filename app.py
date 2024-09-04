@@ -22,6 +22,7 @@ def index():
     SESSIONS[sessionId] = cookies + 1
     response = make_response(render_template(
         'cookies/index.html', nb_cookies=SESSIONS[sessionId]))
+    print (SESSIONS)
     response.headers['cache-control'] = 'no-cache'
     response.set_cookie(SESSION_ID_COOKIE_KEY, sessionId)
     response.set_cookie(HTTP_ONLY_COOKIE_KEY, 'seulement visible sur http - non accessible dans le js - ' + str(datetime.now()), httponly=True)

@@ -15,7 +15,7 @@
     </div>
     <script>
       var button = document.getElementById("crunch");
-      button.addEventListener("click", () => fetch("/cookies"));
+      button.addEventListener("click", () => window.location.reload());
 
       var cookieJs = document.getElementById("cookieJs");
       cookieJs.innerHTML = document.cookie;
