@@ -18,8 +18,8 @@ def index():
     if sessionId == None:
         sessionId = str(uuid.uuid4())
 
-    cookies = SESSIONS.get(sessionId, 0)
-    SESSIONS[sessionId] = cookies + 1
+    count = SESSIONS.get(sessionId, 0)
+    SESSIONS[sessionId] = count + 1
     response = make_response(render_template(
         'cookies/index.html', nb_cookies=SESSIONS[sessionId]))
     print (SESSIONS)
